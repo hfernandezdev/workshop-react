@@ -1,4 +1,5 @@
 import { HiCalendar } from "react-icons/hi";
+import { Link } from "react-router-dom";
 import { Box, Flex, Text, Spacer, Tag, Button, Icon } from '@chakra-ui/react';
 
 import dayjs from "dayjs";
@@ -6,13 +7,7 @@ import "dayjs/locale/es";
 
 export function LaunchItem(launch) {
     return (
-        <Box
-            key={launch.flight_number}
-            bg="gray.100"
-            p={4}
-            m={4}
-            borderRadius="lg"
-        >
+        <Box key={launch.flight_number} bg="gray.100" p={4} m={4} borderRadius="lg">
             <Flex display="flex">
                 <Text fontSize="2xl">
                     Mission <strong>{launch.mission_name}</strong>
@@ -30,7 +25,11 @@ export function LaunchItem(launch) {
                 </Text>
             </Flex>
 
-            <Button mt={2} colorScheme="purple">More Details</Button>
+            <Link to={`/launch/${launch.flight_number}`}>
+                <Button mt={2} colorScheme="purple">
+                    More Details
+                </Button>
+            </Link>
         </Box>
     );
 }
